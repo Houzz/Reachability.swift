@@ -118,7 +118,8 @@ public class Reachability {
     fileprivate let reachabilitySerialQueue: DispatchQueue
     fileprivate(set) var flags: SCNetworkReachabilityFlags? {
         didSet {
-            guard flags != oldValue else { return }
+            guard flags != oldValue,
+                oldValue != nil else { return }
             reachabilityChanged()
         }
     }
